@@ -1,23 +1,32 @@
-import { useEffect } from 'react';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import MovieRow from './components/MovieRow';
 import Tmdb from './Tmdb';
 
-function App() {
+export default () => {
+
+  const [movieList, setMovieList] = useState([])
 
   useEffect(() => {
     const loadAll = async () => {
       let list = await Tmdb.getHomeList()
-      console.log(list);
+      setMovieList(list)
     }
 
     loadAll()
-  },[])
-
+  }, [])
+  console.log(Tmdb);
   return (
-    <div className="App">
-      <h1>ola mundo</h1>
+    <div className="page">
+      <section className='lists'>
+        {movieList.map((item, key) => (
+          <MovieRow
+            key={key}
+            title={item.title}
+            items={item.items}
+          />
+        ))}
+      </section>
     </div>
   );
 }
 
-export default App;
