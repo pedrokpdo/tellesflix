@@ -1,13 +1,14 @@
 import './Header.css'
 
-export default () => {
+export default ({black}) => {
     return (
-        <header>
+        <header className={black ? 'black' : ''}>
             <div className='header--logo'>
-                <h1><a style={{color:'red'}}>TellesFlix</a></h1>
+                <h1><a style={{color:'red', marginBottom:'30px'}}>TellesFlix</a></h1>
             </div>
             <div>
-                <h1><a>Usuario</a></h1>
+               
+                <h1> <input></input><a>Search</a></h1>
             </div>
         </header>
     )
