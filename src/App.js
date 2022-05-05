@@ -4,12 +4,13 @@ import Tmdb from './Tmdb';
 import './App.css'
 import FeaturedMovies from './components/FeaturedMovies';
 import Header from './components/Header';
+import ReactLoading from 'react-loading';
 
 export default () => {
 
   const [movieList, setMovieList] = useState([])
   const [featuredData, setFeaturedData] = useState(null)
-  const [blackHeader, setBlackHeader] = useState (false)
+  const [blackHeader, setBlackHeader] = useState(false)
 
   useEffect(() => {
     const loadAll = async () => {
@@ -40,10 +41,10 @@ export default () => {
       window.removeEventListener('scroll', scrollListener)
     }
 
-  },[])
+  }, [])
   return (
     <div className="page">
-      <Header black={blackHeader}/>
+      <Header black={blackHeader} />
       {featuredData &&
         <FeaturedMovies item={featuredData} />
       }
@@ -59,12 +60,17 @@ export default () => {
         ))}
       </section>
       <footer>
-        Feito com Amor ❤️ por 
+        Feito com Amor ❤️ por
         <br />
         Direitos de imagens para NetFlix
-        <br/>
+        <br />
         Dados Pegos do site TMDB
       </footer>
+      {movieList.length <= 0 &&
+        <div>
+          <ReactLoading className="loading" type='balls' color='red' height={'100%'} width={'100%'} />
+        </div>
+      }
     </div>
   );
 }
