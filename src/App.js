@@ -58,6 +58,13 @@ export default () => {
           />
         ))}
       </section>
+      <footer>
+        Feito com Amor ❤️ por 
+        <br />
+        Direitos de imagens para NetFlix
+        <br/>
+        Dados Pegos do site TMDB
+      </footer>
     </div>
   );
 }
